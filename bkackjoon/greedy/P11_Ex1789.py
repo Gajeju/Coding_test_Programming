@@ -1,7 +1,7 @@
 s = int(input())
 answer = 0
 
-for i in range(s):
+for i in range(s+1):
     answer += i
     if answer > s:
         break
