@@ -1,26 +1,34 @@
 import sys
+input = lambda  : sys.stdin.readline().strip()
 
-t = int(sys.stdin.readline())
+t = int(input())
 
-for _ in range(t):
-    func = sys.stdin.readline().rstrip()
-    n = int(sys.stdin.readline())
-    arr = sys.stdin.readline().rstrip()[1:-1].split(',')
+for i in range(t):
+    func = input()
+    n = int(input())
+    arr = input()[1:-1].split(',')
 
-    for f in func:
-        if f == 'R':
-            arr.reverse()
-        elif f == 'D':
-            print(arr)
-            if arr:
-                arr.remove(arr[0])
+    func.replace('RR', '')
+
+    r, f, b = 0, 0, 0
+
+    for j in func:
+        if j == 'R':
+            r += 1
+        elif j == 'D':
+            if r % 2 == 0:
+                f += 1
             else:
-                print('error')
-                break
+                b += 1
+    if f + b <= n:
+        arr = arr[f:n-b]
+
+        if r % 2 == 1:
+            print('[' + ','.join(arr[::-1]) + ']')
+        else:
+            print('[' + ','.join(arr) + ']')
     else:
-        print("["+",".join(arr)+"]")
-
-
+        print('error')
 
 # 새로운 AC
 # R - 뒤집기  /  D - 버리기
