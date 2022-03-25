@@ -7,6 +7,6 @@ import sys
 
 n = int(sys.stdin.readline())
 stu_weight = list(map(int, sys.stdin.readline().split()))
-start, end = map(int, sys.stdin.readline().split())
+start, end = map(int, sys.stdin.readline().split()) 
 
 print(min(stu_weight[start-1:end]))
